@@ -18,9 +18,17 @@ void emicbus2_stage_reset(void);
 
 uint8_t emicbus2_tx(const uint8_t *frame, uint16_t n);
 
+/* 1 = cola de TX vacia (para drenar antes de un reset). */
+uint8_t emicbus2_tx_idle(void);
+
 /* streamIn_t de lectura del payload recibido (para eI2C y $r) */
 extern const streamIn_t emicbus2_in_stream;
 void emicbus2_in_bind(const uint8_t *data, uint16_t len);
+
+uint8_t emicbus2_my_id(void);
+
+void emicbus2_reply_ack_ext(uint8_t dst, uint8_t seq_confirmado,
+                            const uint8_t *data, uint8_t n);
 
 void EMICBus2_init(void);
 void poll_EMICBus2(void);

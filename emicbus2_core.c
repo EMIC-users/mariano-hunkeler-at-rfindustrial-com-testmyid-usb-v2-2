@@ -8,6 +8,35 @@
 uint16_t emicbus2_tx_ok, emicbus2_rx_ok, emicbus2_crc_err,
          emicbus2_arb_lost, emicbus2_bus_reset, emicbus2_drop;
 
+/*==================[identidad: MODULE_ID = direccion I2C (spec 4.0)]=======*/
+#define EMICBUS2_COMPILED_ID (19)
+
+static uint8_t my_id = 0xFF;
+
+uint8_t emicbus2_my_id(void) { return my_id; }
+
+#define EMICBUS2_META_PAGE 0x00A400UL
+
+static void flashRead(uint32_t pc, uint16_t *lo, uint8_t *hi)
+{
+    TBLPAG = (uint16_t)(pc >> 16);
+    *lo = __builtin_tblrdl((uint16_t)(pc & 0xFFFF));
+    *hi = (uint8_t)__builtin_tblrdh((uint16_t)(pc & 0xFFFF));
+}
+
+static uint8_t metaModuleId(void)
+{
+    uint16_t lo; uint8_t hi;
+    flashRead(EMICBUS2_META_PAGE, &lo, &hi);
+    if ((uint8_t)lo != 'E' || (uint8_t)(lo >> 8) != 'M' || hi != 'I')
+        return 0xFF;
+    flashRead(EMICBUS2_META_PAGE + 2, &lo, &hi);
+    if ((uint8_t)lo != 'C')
+        return 0xFF;
+    flashRead(EMICBUS2_META_PAGE + 8, &lo, &hi);
+    return (uint8_t)lo;
+}
+
 /*==================[CRC16-CCITT-FALSE, motor unico]========================*/
 uint16_t emicbus2_crc16(const uint8_t *d, uint16_t n)
 {
@@ -92,7 +121,7 @@ static void rxReset(void)
 static void i2cHwInit(void)
 {
     I2C2BRG = (uint16_t)(16000000UL / 100000UL - 1);
-    I2C2ADD = 0;                     /* solo general call */
+    I2C2ADD = (my_id != 0xFF) ? my_id : 0;
     I2C2CONbits.STREN = 0;
     I2C2CONbits.GCEN = 1;
     I2C2CONbits.DISSLW = 1;
@@ -183,6 +212,8 @@ static uint8_t  txq_r, txq_w, txq_n;
 static uint8_t  tx_tries;
 static uint16_t tx_backoff;                 /* pasadas de poll a esperar */
 
+uint8_t emicbus2_tx_idle(void) { return txq_n == 0; }
+
 uint8_t emicbus2_tx(const uint8_t *frame, uint16_t n)
 {
     if (txq_n >= EMICBUS2_TX_SLOTS || n > EMICBUS2_TX_MAX) {
@@ -241,6 +272,8 @@ static void dispatch(const uint8_t *b, uint16_t n)
             ((uint16_t)b[7 + plen] | ((uint16_t)b[8 + plen] << 8))) {
             emicbus2_crc_err++; return;
         }
+        if (b[2] != 0x00 && b[2] != my_id)
+            return;
     } else {
         emicbus2_drop++;
         return;
@@ -260,9 +293,39 @@ static void dispatch(const uint8_t *b, uint16_t n)
     }
 }
 
+/*==================[respuesta ACK extendido (spec: [seq][datos...])]=======*/
+static uint8_t txseq;
+
+void emicbus2_reply_ack_ext(uint8_t dst, uint8_t seq_confirmado,
+                            const uint8_t *data, uint8_t n)
+{
+    uint8_t f[9 + 1 + 48];
+    uint16_t crc, plen = (uint16_t)(1 + n);
+    uint8_t i;
+    if (n > 48)
+        return;
+    f[0] = 0x10;                            /* TYPE_ACK */
+    f[1] = 0x20;                            /* VER v2 */
+    f[2] = dst;
+    f[3] = my_id;                           /* 0xFF si no hay identidad */
+    f[4] = txseq++;
+    f[5] = (uint8_t)plen; f[6] = 0;
+    f[7] = seq_confirmado;
+    for (i = 0; i < n; i++) f[8 + i] = data[i];
+    crc = emicbus2_crc16(f, (uint16_t)(7 + plen));
+    f[7 + plen] = (uint8_t)(crc & 0xFF);
+    f[8 + plen] = (uint8_t)(crc >> 8);
+    emicbus2_tx(f, (uint16_t)(9 + plen));
+}
+
 /*==================[init + poll]===========================================*/
 void EMICBus2_init(void)
 {
+    uint8_t m = metaModuleId();
+    if (m >= 0x08 && m <= 0x77)
+        my_id = m;                          /* lo deployado manda */
+    else if ((EMICBUS2_COMPILED_ID) >= 0x08 && (EMICBUS2_COMPILED_ID) <= 0x77)
+        my_id = (uint8_t)(EMICBUS2_COMPILED_ID);
     i2cHwInit();
 }
 
