@@ -96,6 +96,8 @@ static uint8_t  rxbuf[EMICBUS2_RX_MAX];
 static uint16_t rxlen = 0;
 static uint8_t  in_txn = 0;
 
+static uint16_t drain_orphan = 0;
+
 static void slaveDrain(void)
 {
     uint8_t d;
@@ -107,6 +109,8 @@ static void slaveDrain(void)
             rxlen = 0;
         } else if (in_txn && rxlen < EMICBUS2_RX_MAX) {
             rxbuf[rxlen++] = d;
+        } else {
+            drain_orphan++;                 /* dato sin captura activa (H8) */
         }
     }
 }
@@ -342,7 +346,30 @@ uint8_t emicbus2_debug_dump(uint8_t *d)
     flashRead(0xFF0002UL, &lo, &hi);    /* DEVREV */
     d[19] = (uint8_t)lo;
     d[20] = (uint8_t)(lo >> 8);
-    return 21;
+    d[21] = (uint8_t)drain_orphan;
+    d[22] = (uint8_t)(drain_orphan >> 8);
+    return 23;
+}
+
+void emicbus2_reinit_i2c(void)
+{
+    volatile uint16_t w;
+    I2C2CON = 0;
+    for (w = 0; w < 200; w++);
+    i2cHwInit();
+    rxReset();
+}
+
+void emicbus2_reinit_pmd(void)
+{
+    volatile uint16_t w;
+    I2C2CON = 0;
+    PMD3bits.I2C2MD = 1;         /* periferico OFF total */
+    for (w = 0; w < 200; w++);
+    PMD3bits.I2C2MD = 0;
+    for (w = 0; w < 200; w++);
+    i2cHwInit();
+    rxReset();
 }
 
 /*==================[init + poll]===========================================*/

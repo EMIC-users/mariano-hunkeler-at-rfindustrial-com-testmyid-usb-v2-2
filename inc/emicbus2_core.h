@@ -32,6 +32,10 @@ void emicbus2_reply_ack_ext(uint8_t dst, uint8_t seq_confirmado,
 
 uint8_t emicbus2_debug_dump(uint8_t *d);
 
+/* Re-inits de diagnostico (CTRL 0x10/0x11, F6/H8). */
+void emicbus2_reinit_i2c(void);
+void emicbus2_reinit_pmd(void);
+
 void EMICBus2_init(void);
 void poll_EMICBus2(void);
 

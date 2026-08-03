@@ -7,6 +7,8 @@
 #define CTRL_PING      0x05
 #define CTRL_RESET     0x06
 #define CTRL_DUMP_I2C  0x0F
+#define CTRL_REINIT_I2C 0x10
+#define CTRL_REINIT_PMD 0x11
 
 static void statPack(uint8_t *d, uint8_t idx, uint8_t id, uint16_t val)
 {
@@ -63,11 +65,21 @@ void emicbus2_rx_CTRL(const uint8_t *b, uint16_t n)
         break;
 
     case CTRL_DUMP_I2C: {                   /* diagnostico F6/H8 */
-        uint8_t d[21];
+        uint8_t d[23];
         uint8_t dn = emicbus2_debug_dump(d);
         emicbus2_reply_ack_ext(src, seq, d, dn);
         break;
     }
+
+    case CTRL_REINIT_I2C:                   /* diagnostico F6/H8 */
+        emicbus2_reinit_i2c();
+        emicbus2_reply_ack_ext(src, seq, 0, 0);
+        break;
+
+    case CTRL_REINIT_PMD:                   /* diagnostico F6/H8 */
+        emicbus2_reinit_pmd();
+        emicbus2_reply_ack_ext(src, seq, 0, 0);
+        break;
 
     case CTRL_RESET:
         emicbus2_reply_ack_ext(src, seq, 0, 0);
