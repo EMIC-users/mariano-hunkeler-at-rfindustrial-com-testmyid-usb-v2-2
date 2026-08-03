@@ -241,24 +241,25 @@ section                    address   length (PC units)   length (bytes) (dec)
 -------                    -------   -----------------   --------------------
 .text                        0x200              0x3f48          0x5eec  (24300)
 .const                      0x4148                0x16            0x21  (33)
-.text                       0x415e              0x126c          0x1ba2  (7074)
-.dinit                      0x53ca                0xb6           0x111  (273)
-.text                       0x5480               0x27e           0x3bd  (957)
+.text                       0x415e              0x1566          0x2019  (8217)
+.dinit                      0x56c4                0xbe           0x11d  (285)
+.text                       0x5782               0x244           0x366  (870)
 myFlashSpace                0x6000               0x400           0x600  (1536)
 
-                 Total "program" memory used (bytes):         0x857d  (34173) 52%
+                 Total "program" memory used (bytes):         0x89a9  (35241) 53%
 
 
 "data" Memory  [Origin = 0x800, Length = 0x2000]
 
 section                    address      alignment gaps    total length  (dec)
 -------                    -------      --------------    -------------------
-.nbss                        0x800                   0            0x3a  (58)
-.bss                         0x83a                   0           0x7ac  (1964)
-.data                        0xfe6                   0            0x78  (120)
-.bss                        0x105e                   0             0x4  (4)
+.nbss                        0x800                   0            0x3c  (60)
+.ndata                       0x83c                   0             0x2  (2)
+.bss                         0x83e                   0           0x7ac  (1964)
+.data                        0xfea                   0            0x78  (120)
+.bss                        0x1062                   0             0x4  (4)
 
-                 Total "data" memory used (bytes):          0x862  (2146) 26%
+                 Total "data" memory used (bytes):          0x866  (2150) 26%
 
 
 Dynamic Memory Usage
@@ -266,9 +267,9 @@ Dynamic Memory Usage
 region                     address                      maximum length  (dec)
 ------                     -------                      ---------------------
 heap                             0                                   0  (0)
-stack                       0x1062                              0x179e  (6046)
+stack                       0x1066                              0x179a  (6042)
 
-                 Maximum dynamic memory (bytes):         0x179e  (6046)
+                 Maximum dynamic memory (bytes):         0x179a  (6042)
 
 Info: Project is using a large data memory model when small data memory model is sufficient.
 
@@ -282,34 +283,34 @@ External Symbols in Data Memory (by address):
                     0x0808                  _emicbus2_bus_reset
                     0x080a                  _emicbus2_drop
                     0x080c                  _emicbus2_stage_len
-                    0x0830                  _offsetPutc3B
-                    0x0832                  _offset
-                    0x0836                  _UART1_flowControlVar
-                    0x0837                  _UART1_inverted
-                    0x083a                  _UART1_IN_fifo
-                    0x0a40                  _UART1_OUT_fifo
-                    0x0c46                  _emicbus2_stage
-                    0x105a                  _bufferPutc3B
-                    0x105e                  ___errno_val
+                    0x0832                  _offsetPutc3B
+                    0x0834                  _offset
+                    0x0838                  _UART1_flowControlVar
+                    0x0839                  _UART1_inverted
+                    0x083e                  _UART1_IN_fifo
+                    0x0a44                  _UART1_OUT_fifo
+                    0x0c4a                  _emicbus2_stage
+                    0x105e                  _bufferPutc3B
+                    0x1062                  ___errno_val
 
 External Symbols in Data Memory (by name):
 
-                    0x083a                  _UART1_IN_fifo
-                    0x0a40                  _UART1_OUT_fifo
-                    0x0836                  _UART1_flowControlVar
-                    0x0837                  _UART1_inverted
-                    0x105e                  ___errno_val
-                    0x105a                  _bufferPutc3B
+                    0x083e                  _UART1_IN_fifo
+                    0x0a44                  _UART1_OUT_fifo
+                    0x0838                  _UART1_flowControlVar
+                    0x0839                  _UART1_inverted
+                    0x1062                  ___errno_val
+                    0x105e                  _bufferPutc3B
                     0x0806                  _emicbus2_arb_lost
                     0x0808                  _emicbus2_bus_reset
                     0x0804                  _emicbus2_crc_err
                     0x080a                  _emicbus2_drop
                     0x0802                  _emicbus2_rx_ok
-                    0x0c46                  _emicbus2_stage
+                    0x0c4a                  _emicbus2_stage
                     0x080c                  _emicbus2_stage_len
                     0x0800                  _emicbus2_tx_ok
-                    0x0832                  _offset
-                    0x0830                  _offsetPutc3B
+                    0x0834                  _offset
+                    0x0832                  _offsetPutc3B
 
 External Symbols in Program Memory (by address):
 
@@ -362,9 +363,9 @@ External Symbols in Program Memory (by address):
                   0x002ecc                  ___toupper_l
                   0x002ed2                  ___stdio_exit
                   0x002ee6                  ___stpcpy
-                  0x002f26                  ___ltdf2
-                  0x002f26                  ___eqdf2
                   0x002f26                  ___ledf2
+                  0x002f26                  ___eqdf2
+                  0x002f26                  ___ltdf2
                   0x002f30                  ___gtdf2
                   0x002f30                  ___gedf2
                   0x002f3a                  ___divsi3
@@ -377,9 +378,9 @@ External Symbols in Program Memory (by address):
                   0x003008                  __funpack
                   0x003032                  ___truncdfsf2
                   0x003088                  ___umodsi3
+                  0x00308e                  ___mulp32eds3
                   0x00308e                  ___mulp32peds3
                   0x00308e                  ___mulsi3
-                  0x00308e                  ___mulp32eds3
                   0x00309a                  ___subdf3
                   0x0030a6                  ___adddf3
                   0x00313c                  ___divdf3
@@ -426,122 +427,125 @@ External Symbols in Program Memory (by address):
                   0x00414c                  _streamOut_Uart1
                   0x004150                  _emicbus2_stage_stream
                   0x004154                  _emicbus2_in_stream
-                  0x00415e                  _streamIn_t_ptr_to_float
-                  0x00419a                  _streamIn_t_ptr_to_char
-                  0x0041d4                  _streamIn_t_ptr_to_uint8_t
-                  0x004212                  _streamIn_t_ptr_to_uint16_t
-                  0x00424e                  _streamIn_t_ptr_to_uint32_t
-                  0x00428a                  _streamIn_t_ptr_to_uint64_t
-                  0x0042c6                  _streamIn_t_ptr_to_int8_t
-                  0x004304                  _streamIn_t_ptr_to_int16_t
-                  0x004340                  _streamIn_t_ptr_to_int32_t
-                  0x00437c                  _streamIn_t_ptr_to_int64_t
-                  0x0043b8                  _streamIn_t_ptr_to_ascii
-                  0x0043f8                  _sendDataToStream
-                  0x004714                  _emicbus2_crc16
-                  0x004770                  C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o:_stagePut
-                  0x00478c                  C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o:_stageAvailable
-                  0x004798                  _emicbus2_stage_reset
-                  0x0047a0                  C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o:_inGet
-                  0x0047be                  C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o:_inCount
-                  0x0047ca                  _emicbus2_in_bind
-                  0x004a14                  _emicbus2_tx
-                  0x004c6c                  _EMICBus2_init
-                  0x004c74                  _poll_EMICBus2
-                  0x004c9e                  _UART1_init_fifo
-                  0x004cb8                  _UART1_is_empty
-                  0x004ccc                  _UART1_is_full
-                  0x004ce6                  _UART1_count
-                  0x004cf2                  _UART1_push
-                  0x004d48                  _UART1_pop
-                  0x004d7e                  _UART1_peek
-                  0x004d9c                  _UART1_simplexMode
-                  0x004da8                  _UART1_flowControl
-                  0x004dcc                  _UART1_invert
-                  0x004dfe                  _UART1_bd
-                  0x004eba                  _UART1_init
-                  0x004f2c                  _UART1_OFF
-                  0x004f3a                  _UART1_ON
-                  0x004f50                  _UART1_IN_pop
-                  0x004f5a                  _UART1_IN_count
-                  0x004f62                  _UART1_OUT_push
-                  0x004f70                  _UART1_OUT_count
-                  0x004f7c                  _streamPushCtr
-                  0x004fca                  _streamPush
-                  0x005004                  _streamPop
-                  0x00503c                  _streamOpenWriteFrame
-                  0x00507e                  _streamOpenReadFrame
-                  0x0050ca                  _streamReOpenReadFrame
-                  0x0050e2                  _streamCloseReadFrame
-                  0x00510c                  _flushProgramPutc3B
-                  0x005126                  _putc_program3B
-                  0x00515a                  _ReadMem
-                  0x005194                  _WriteMem
-                  0x005204                  _ErasePage
-                  0x005240                  _getc_program3B
-                  0x00526e                  _pI2C
-                  0x005364                  _emicbus2_rx_MSG
-                  0x005480                  _USB_Init
-                  0x005488                  _pUSB
-                  0x0054a0                  _Poll_USB
-                  0x0054fe                  _ISR_UART1_CALLBACK
-                  0x005518                  _USB_sendCount
-                  0x005522                  _LEDs_led_init
-                  0x00552a                  _LEDs_led_blink
-                  0x00554a                  _LEDs_led_poll
-                  0x0055a8                  _save
-                  0x0055d6                  _load
-                  0x005604                  _onReset
-                  0x005612                  _eI2C
-                  0x005632                  _eUSB
-                  0x005652                  _emicbus2_rx_CTRL
-                  0x00568c                  _getSystemMilis
-                  0x005696                  _callback
-                  0x0056a8                  _systemTimeInit
-                  0x0056b2                  _initSystem
-                  0x0056c0                  _main
-                  0x0056d6                  _timer4_init
-                  0x0056ec                  _Init_USBDriver
-                  0x0056f8                  _Poll_USBDriver
+                  0x00415e                  _emicbus2_my_id
+                  0x0041ea                  _emicbus2_crc16
+                  0x004246                  C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o:_stagePut
+                  0x004262                  C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o:_stageAvailable
+                  0x00426e                  _emicbus2_stage_reset
+                  0x004276                  C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o:_inGet
+                  0x004294                  C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o:_inCount
+                  0x0042a0                  _emicbus2_in_bind
+                  0x0044f8                  _emicbus2_tx_idle
+                  0x004508                  _emicbus2_tx
+                  0x00477c                  _emicbus2_reply_ack_ext
+                  0x004810                  _EMICBus2_init
+                  0x004836                  _poll_EMICBus2
+                  0x004860                  _streamIn_t_ptr_to_float
+                  0x00489c                  _streamIn_t_ptr_to_char
+                  0x0048d6                  _streamIn_t_ptr_to_uint8_t
+                  0x004914                  _streamIn_t_ptr_to_uint16_t
+                  0x004950                  _streamIn_t_ptr_to_uint32_t
+                  0x00498c                  _streamIn_t_ptr_to_uint64_t
+                  0x0049c8                  _streamIn_t_ptr_to_int8_t
+                  0x004a06                  _streamIn_t_ptr_to_int16_t
+                  0x004a42                  _streamIn_t_ptr_to_int32_t
+                  0x004a7e                  _streamIn_t_ptr_to_int64_t
+                  0x004aba                  _streamIn_t_ptr_to_ascii
+                  0x004afa                  _sendDataToStream
+                  0x004e16                  _UART1_init_fifo
+                  0x004e30                  _UART1_is_empty
+                  0x004e44                  _UART1_is_full
+                  0x004e5e                  _UART1_count
+                  0x004e6a                  _UART1_push
+                  0x004ec0                  _UART1_pop
+                  0x004ef6                  _UART1_peek
+                  0x004f14                  _UART1_simplexMode
+                  0x004f20                  _UART1_flowControl
+                  0x004f44                  _UART1_invert
+                  0x004f76                  _UART1_bd
+                  0x005032                  _UART1_init
+                  0x0050a4                  _UART1_OFF
+                  0x0050b2                  _UART1_ON
+                  0x0050c8                  _UART1_IN_pop
+                  0x0050d2                  _UART1_IN_count
+                  0x0050da                  _UART1_OUT_push
+                  0x0050e8                  _UART1_OUT_count
+                  0x0050f4                  _streamPushCtr
+                  0x005142                  _streamPush
+                  0x00517c                  _streamPop
+                  0x0051b4                  _streamOpenWriteFrame
+                  0x0051f6                  _streamOpenReadFrame
+                  0x005242                  _streamReOpenReadFrame
+                  0x00525a                  _streamCloseReadFrame
+                  0x0052c8                  _emicbus2_rx_CTRL
+                  0x005406                  _flushProgramPutc3B
+                  0x005420                  _putc_program3B
+                  0x005454                  _ReadMem
+                  0x00548e                  _WriteMem
+                  0x0054fe                  _ErasePage
+                  0x00553a                  _getc_program3B
+                  0x005568                  _pI2C
+                  0x00565e                  _emicbus2_rx_MSG
+                  0x005782                  _USB_Init
+                  0x00578a                  _pUSB
+                  0x0057a2                  _Poll_USB
+                  0x005800                  _ISR_UART1_CALLBACK
+                  0x00581a                  _USB_sendCount
+                  0x005824                  _LEDs_led_init
+                  0x00582c                  _LEDs_led_blink
+                  0x00584c                  _LEDs_led_poll
+                  0x0058aa                  _save
+                  0x0058d8                  _load
+                  0x005906                  _onReset
+                  0x005914                  _eI2C
+                  0x005934                  _eUSB
+                  0x005954                  _getSystemMilis
+                  0x00595e                  _callback
+                  0x005970                  _systemTimeInit
+                  0x00597a                  _initSystem
+                  0x005988                  _main
+                  0x00599e                  _timer4_init
+                  0x0059b4                  _Init_USBDriver
+                  0x0059c0                  _Poll_USBDriver
                   0x006000                  _myFlashMemory
 
 External Symbols in Program Memory (by name):
 
-                  0x0047be                  C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o:_inCount
-                  0x0047a0                  C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o:_inGet
-                  0x00478c                  C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o:_stageAvailable
-                  0x004770                  C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o:_stagePut
-                  0x004c6c                  _EMICBus2_init
-                  0x005204                  _ErasePage
-                  0x0054fe                  _ISR_UART1_CALLBACK
-                  0x0056ec                  _Init_USBDriver
-                  0x00552a                  _LEDs_led_blink
-                  0x005522                  _LEDs_led_init
-                  0x00554a                  _LEDs_led_poll
-                  0x0054a0                  _Poll_USB
-                  0x0056f8                  _Poll_USBDriver
-                  0x00515a                  _ReadMem
-                  0x004f5a                  _UART1_IN_count
-                  0x004f50                  _UART1_IN_pop
-                  0x004f2c                  _UART1_OFF
-                  0x004f3a                  _UART1_ON
-                  0x004f70                  _UART1_OUT_count
-                  0x004f62                  _UART1_OUT_push
-                  0x004dfe                  _UART1_bd
-                  0x004ce6                  _UART1_count
-                  0x004da8                  _UART1_flowControl
-                  0x004eba                  _UART1_init
-                  0x004c9e                  _UART1_init_fifo
-                  0x004dcc                  _UART1_invert
-                  0x004cb8                  _UART1_is_empty
-                  0x004ccc                  _UART1_is_full
-                  0x004d7e                  _UART1_peek
-                  0x004d48                  _UART1_pop
-                  0x004cf2                  _UART1_push
-                  0x004d9c                  _UART1_simplexMode
-                  0x005480                  _USB_Init
-                  0x005518                  _USB_sendCount
-                  0x005194                  _WriteMem
+                  0x004294                  C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o:_inCount
+                  0x004276                  C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o:_inGet
+                  0x004262                  C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o:_stageAvailable
+                  0x004246                  C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o:_stagePut
+                  0x004810                  _EMICBus2_init
+                  0x0054fe                  _ErasePage
+                  0x005800                  _ISR_UART1_CALLBACK
+                  0x0059b4                  _Init_USBDriver
+                  0x00582c                  _LEDs_led_blink
+                  0x005824                  _LEDs_led_init
+                  0x00584c                  _LEDs_led_poll
+                  0x0057a2                  _Poll_USB
+                  0x0059c0                  _Poll_USBDriver
+                  0x005454                  _ReadMem
+                  0x0050d2                  _UART1_IN_count
+                  0x0050c8                  _UART1_IN_pop
+                  0x0050a4                  _UART1_OFF
+                  0x0050b2                  _UART1_ON
+                  0x0050e8                  _UART1_OUT_count
+                  0x0050da                  _UART1_OUT_push
+                  0x004f76                  _UART1_bd
+                  0x004e5e                  _UART1_count
+                  0x004f20                  _UART1_flowControl
+                  0x005032                  _UART1_init
+                  0x004e16                  _UART1_init_fifo
+                  0x004f44                  _UART1_invert
+                  0x004e30                  _UART1_is_empty
+                  0x004e44                  _UART1_is_full
+                  0x004ef6                  _UART1_peek
+                  0x004ec0                  _UART1_pop
+                  0x004e6a                  _UART1_push
+                  0x004f14                  _UART1_simplexMode
+                  0x005782                  _USB_Init
+                  0x00581a                  _USB_sendCount
+                  0x00548e                  _WriteMem
                   0x000396                  __DefaultInterrupt
                   0x0002ec                  __T4Interrupt
                   0x000356                  __U1RXInterrupt
@@ -633,67 +637,70 @@ External Symbols in Program Memory (by name):
                   0x0003d4                  _atoi
                   0x000434                  _atol
                   0x00049c                  _atoll
-                  0x005696                  _callback
+                  0x00595e                  _callback
                   0x003c24                  _copysignl
-                  0x005612                  _eI2C
-                  0x005632                  _eUSB
-                  0x004714                  _emicbus2_crc16
-                  0x0047ca                  _emicbus2_in_bind
+                  0x005914                  _eI2C
+                  0x005934                  _eUSB
+                  0x0041ea                  _emicbus2_crc16
+                  0x0042a0                  _emicbus2_in_bind
                   0x004154                  _emicbus2_in_stream
-                  0x005652                  _emicbus2_rx_CTRL
-                  0x005364                  _emicbus2_rx_MSG
-                  0x004798                  _emicbus2_stage_reset
+                  0x00415e                  _emicbus2_my_id
+                  0x00477c                  _emicbus2_reply_ack_ext
+                  0x0052c8                  _emicbus2_rx_CTRL
+                  0x00565e                  _emicbus2_rx_MSG
+                  0x00426e                  _emicbus2_stage_reset
                   0x004150                  _emicbus2_stage_stream
-                  0x004a14                  _emicbus2_tx
+                  0x004508                  _emicbus2_tx
+                  0x0044f8                  _emicbus2_tx_idle
                   0x003c58                  _fabsl
                   0x003c6e                  _floorl
-                  0x00510c                  _flushProgramPutc3B
+                  0x005406                  _flushProgramPutc3B
                   0x003d68                  _fmodl
-                  0x00568c                  _getSystemMilis
-                  0x005240                  _getc_program3B
-                  0x0056b2                  _initSystem
-                  0x0055d6                  _load
-                  0x0056c0                  _main
+                  0x005954                  _getSystemMilis
+                  0x00553a                  _getc_program3B
+                  0x00597a                  _initSystem
+                  0x0058d8                  _load
+                  0x005988                  _main
                   0x000500                  _memcpy
                   0x00050e                  _memset
                   0x006000                  _myFlashMemory
-                  0x005604                  _onReset
-                  0x00526e                  _pI2C
-                  0x005488                  _pUSB
-                  0x004c74                  _poll_EMICBus2
-                  0x005126                  _putc_program3B
-                  0x0055a8                  _save
+                  0x005906                  _onReset
+                  0x005568                  _pI2C
+                  0x00578a                  _pUSB
+                  0x004836                  _poll_EMICBus2
+                  0x005420                  _putc_program3B
+                  0x0058aa                  _save
                   0x004094                  _scalbnf
                   0x0040e8                  _scalbnl
-                  0x0043f8                  _sendDataToStream
+                  0x004afa                  _sendDataToStream
                   0x0005d6                  _snprintf
                   0x002eb2                  _strcpy
-                  0x0050e2                  _streamCloseReadFrame
+                  0x00525a                  _streamCloseReadFrame
                   0x004148                  _streamIn_Uart1
-                  0x0043b8                  _streamIn_t_ptr_to_ascii
-                  0x00419a                  _streamIn_t_ptr_to_char
-                  0x00415e                  _streamIn_t_ptr_to_float
-                  0x004304                  _streamIn_t_ptr_to_int16_t
-                  0x004340                  _streamIn_t_ptr_to_int32_t
-                  0x00437c                  _streamIn_t_ptr_to_int64_t
-                  0x0042c6                  _streamIn_t_ptr_to_int8_t
-                  0x004212                  _streamIn_t_ptr_to_uint16_t
-                  0x00424e                  _streamIn_t_ptr_to_uint32_t
-                  0x00428a                  _streamIn_t_ptr_to_uint64_t
-                  0x0041d4                  _streamIn_t_ptr_to_uint8_t
-                  0x00507e                  _streamOpenReadFrame
-                  0x00503c                  _streamOpenWriteFrame
+                  0x004aba                  _streamIn_t_ptr_to_ascii
+                  0x00489c                  _streamIn_t_ptr_to_char
+                  0x004860                  _streamIn_t_ptr_to_float
+                  0x004a06                  _streamIn_t_ptr_to_int16_t
+                  0x004a42                  _streamIn_t_ptr_to_int32_t
+                  0x004a7e                  _streamIn_t_ptr_to_int64_t
+                  0x0049c8                  _streamIn_t_ptr_to_int8_t
+                  0x004914                  _streamIn_t_ptr_to_uint16_t
+                  0x004950                  _streamIn_t_ptr_to_uint32_t
+                  0x00498c                  _streamIn_t_ptr_to_uint64_t
+                  0x0048d6                  _streamIn_t_ptr_to_uint8_t
+                  0x0051f6                  _streamOpenReadFrame
+                  0x0051b4                  _streamOpenWriteFrame
                   0x00414c                  _streamOut_Uart1
-                  0x005004                  _streamPop
-                  0x004fca                  _streamPush
-                  0x004f7c                  _streamPushCtr
-                  0x0050ca                  _streamReOpenReadFrame
+                  0x00517c                  _streamPop
+                  0x005142                  _streamPush
+                  0x0050f4                  _streamPushCtr
+                  0x005242                  _streamReOpenReadFrame
                   0x001f7a                  _strlen
                   0x000640                  _strtod
                   0x00063a                  _strtof
                   0x000646                  _strtold
-                  0x0056a8                  _systemTimeInit
-                  0x0056d6                  _timer4_init
+                  0x005970                  _systemTimeInit
+                  0x00599e                  _timer4_init
                   0x001faa                  _tolower
                   0x002ec0                  _toupper
                   0x0019fa                  _vfprintf
@@ -2067,8 +2074,8 @@ __c30_signature
 
 __xc_reference_data
 
-.nbss               0x0800         0x3a
- .nbss              0x0800         0x22 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o
+.nbss               0x0800         0x3c
+ .nbss              0x0800         0x24 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o
                     0x0800                  _emicbus2_tx_ok
                     0x0802                  _emicbus2_rx_ok
                     0x0804                  _emicbus2_crc_err
@@ -2076,39 +2083,42 @@ __xc_reference_data
                     0x0808                  _emicbus2_bus_reset
                     0x080a                  _emicbus2_drop
                     0x080c                  _emicbus2_stage_len
- .nbss              0x0822          0xa C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\led_led.o
- .nbss              0x082c          0x4 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\systemTimer.o
- .nbss              0x0830          0x4 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\Flash.o
-                    0x0830                  _offsetPutc3B
-                    0x0832                  _offset
- .nbss              0x0834          0x2 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\timer.o
- .nbss              0x0836          0x2 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\UART1.o
-                    0x0836                  _UART1_flowControlVar
-                    0x0837                  _UART1_inverted
- .nbss              0x0838          0x2 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\USB_API.o
+ .nbss              0x0824          0xa C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\led_led.o
+ .nbss              0x082e          0x4 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\systemTimer.o
+ .nbss              0x0832          0x4 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\Flash.o
+                    0x0832                  _offsetPutc3B
+                    0x0834                  _offset
+ .nbss              0x0836          0x2 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\timer.o
+ .nbss              0x0838          0x2 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\UART1.o
+                    0x0838                  _UART1_flowControlVar
+                    0x0839                  _UART1_inverted
+ .nbss              0x083a          0x2 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\USB_API.o
 
-.bss                0x083a        0x7ac
- .bss               0x083a        0x40c C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\UART1.o
-                    0x083a                  _UART1_IN_fifo
-                    0x0a40                  _UART1_OUT_fifo
- .bss               0x0c46        0x3a0 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o
-                    0x0c46                  _emicbus2_stage
+.ndata              0x083c          0x2
+ .ndata             0x083c          0x2 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o
 
-.data               0x0fe6         0x78
- .data              0x0fe6         0x36 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-elf.a(floatscan.XX_o)
- .data              0x101c         0x1e c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-elf.a(__printf_core.XX_o)
- .data              0x103a         0x10 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-elf.a(__fmt_a.XX_o)
- .data              0x104a         0x10 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-elf.a(__fmt_fp.XX_o)
- .data              0x105a          0x4 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\Flash.o
-                    0x105a                  _bufferPutc3B
+.bss                0x083e        0x7ac
+ .bss               0x083e        0x40c C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\UART1.o
+                    0x083e                  _UART1_IN_fifo
+                    0x0a44                  _UART1_OUT_fifo
+ .bss               0x0c4a        0x3a0 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o
+                    0x0c4a                  _emicbus2_stage
 
-.bss                0x105e          0x4
- .bss               0x105e          0x2 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-elf.a(__errno_location.XX_o)
-                    0x105e                  ___errno_val
- .bss               0x1060          0x2 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-elf.a(__stdio_exit.XX_o)
-                    0x1060                  ___stdin_used
-                    0x1060                  ___stdout_used
-                    0x1060                  ___stderr_used
+.data               0x0fea         0x78
+ .data              0x0fea         0x36 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-elf.a(floatscan.XX_o)
+ .data              0x1020         0x1e c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-elf.a(__printf_core.XX_o)
+ .data              0x103e         0x10 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-elf.a(__fmt_a.XX_o)
+ .data              0x104e         0x10 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-elf.a(__fmt_fp.XX_o)
+ .data              0x105e          0x4 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\Flash.o
+                    0x105e                  _bufferPutc3B
+
+.bss                0x1062          0x4
+ .bss               0x1062          0x2 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-elf.a(__errno_location.XX_o)
+                    0x1062                  ___errno_val
+ .bss               0x1064          0x2 c:/program files/microchip/xc16/v2.10/bin/bin/../../lib\libc99-elf.a(__stdio_exit.XX_o)
+                    0x1064                  ___stdin_used
+                    0x1064                  ___stdout_used
+                    0x1064                  ___stderr_used
 
 myFlashSpace      0x006000        0x400
  myFlashSpace     0x006000        0x400 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\Flash.o
@@ -2145,101 +2155,104 @@ myFlashSpace      0x006000        0x400
                     0xc154                  _emicbus2_in_stream
  .const             0xc158          0x6 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\userFncFile.o
 
-.text             0x00415e       0x126c
- .text            0x00415e        0x5b6 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\streamIn.o
-                  0x00415e                  _streamIn_t_ptr_to_float
-                  0x00419a                  _streamIn_t_ptr_to_char
-                  0x0041d4                  _streamIn_t_ptr_to_uint8_t
-                  0x004212                  _streamIn_t_ptr_to_uint16_t
-                  0x00424e                  _streamIn_t_ptr_to_uint32_t
-                  0x00428a                  _streamIn_t_ptr_to_uint64_t
-                  0x0042c6                  _streamIn_t_ptr_to_int8_t
-                  0x004304                  _streamIn_t_ptr_to_int16_t
-                  0x004340                  _streamIn_t_ptr_to_int32_t
-                  0x00437c                  _streamIn_t_ptr_to_int64_t
-                  0x0043b8                  _streamIn_t_ptr_to_ascii
-                  0x0043f8                  _sendDataToStream
- .text            0x004714        0x58a C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o
-                  0x004714                  _emicbus2_crc16
-                  0x004770                  C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o:_stagePut
-                  0x00478c                  C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o:_stageAvailable
-                  0x004798                  _emicbus2_stage_reset
-                  0x0047a0                  C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o:_inGet
-                  0x0047be                  C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o:_inCount
-                  0x0047ca                  _emicbus2_in_bind
-                  0x004a14                  _emicbus2_tx
-                  0x004c6c                  _EMICBus2_init
-                  0x004c74                  _poll_EMICBus2
- .text            0x004c9e        0x2de C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\UART1.o
-                  0x004c9e                  _UART1_init_fifo
-                  0x004cb8                  _UART1_is_empty
-                  0x004ccc                  _UART1_is_full
-                  0x004ce6                  _UART1_count
-                  0x004cf2                  _UART1_push
-                  0x004d48                  _UART1_pop
-                  0x004d7e                  _UART1_peek
-                  0x004d9c                  _UART1_simplexMode
-                  0x004da8                  _UART1_flowControl
-                  0x004dcc                  _UART1_invert
-                  0x004dfe                  _UART1_bd
-                  0x004eba                  _UART1_init
-                  0x004f2c                  _UART1_OFF
-                  0x004f3a                  _UART1_ON
-                  0x004f50                  _UART1_IN_pop
-                  0x004f5a                  _UART1_IN_count
-                  0x004f62                  _UART1_OUT_push
-                  0x004f70                  _UART1_OUT_count
- .text            0x004f7c        0x190 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\stream.o
-                  0x004f7c                  _streamPushCtr
-                  0x004fca                  _streamPush
-                  0x005004                  _streamPop
-                  0x00503c                  _streamOpenWriteFrame
-                  0x00507e                  _streamOpenReadFrame
-                  0x0050ca                  _streamReOpenReadFrame
-                  0x0050e2                  _streamCloseReadFrame
- .text            0x00510c        0x162 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\Flash.o
-                  0x00510c                  _flushProgramPutc3B
-                  0x005126                  _putc_program3B
-                  0x00515a                  _ReadMem
-                  0x005194                  _WriteMem
-                  0x005204                  _ErasePage
-                  0x005240                  _getc_program3B
- .text            0x00526e        0x15c C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\frame_MSG.o
-                  0x00526e                  _pI2C
-                  0x005364                  _emicbus2_rx_MSG
+.text             0x00415e       0x1566
+ .text            0x00415e        0x702 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o
+                  0x00415e                  _emicbus2_my_id
+                  0x0041ea                  _emicbus2_crc16
+                  0x004246                  C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o:_stagePut
+                  0x004262                  C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o:_stageAvailable
+                  0x00426e                  _emicbus2_stage_reset
+                  0x004276                  C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o:_inGet
+                  0x004294                  C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\emicbus2_core.o:_inCount
+                  0x0042a0                  _emicbus2_in_bind
+                  0x0044f8                  _emicbus2_tx_idle
+                  0x004508                  _emicbus2_tx
+                  0x00477c                  _emicbus2_reply_ack_ext
+                  0x004810                  _EMICBus2_init
+                  0x004836                  _poll_EMICBus2
+ .text            0x004860        0x5b6 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\streamIn.o
+                  0x004860                  _streamIn_t_ptr_to_float
+                  0x00489c                  _streamIn_t_ptr_to_char
+                  0x0048d6                  _streamIn_t_ptr_to_uint8_t
+                  0x004914                  _streamIn_t_ptr_to_uint16_t
+                  0x004950                  _streamIn_t_ptr_to_uint32_t
+                  0x00498c                  _streamIn_t_ptr_to_uint64_t
+                  0x0049c8                  _streamIn_t_ptr_to_int8_t
+                  0x004a06                  _streamIn_t_ptr_to_int16_t
+                  0x004a42                  _streamIn_t_ptr_to_int32_t
+                  0x004a7e                  _streamIn_t_ptr_to_int64_t
+                  0x004aba                  _streamIn_t_ptr_to_ascii
+                  0x004afa                  _sendDataToStream
+ .text            0x004e16        0x2de C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\UART1.o
+                  0x004e16                  _UART1_init_fifo
+                  0x004e30                  _UART1_is_empty
+                  0x004e44                  _UART1_is_full
+                  0x004e5e                  _UART1_count
+                  0x004e6a                  _UART1_push
+                  0x004ec0                  _UART1_pop
+                  0x004ef6                  _UART1_peek
+                  0x004f14                  _UART1_simplexMode
+                  0x004f20                  _UART1_flowControl
+                  0x004f44                  _UART1_invert
+                  0x004f76                  _UART1_bd
+                  0x005032                  _UART1_init
+                  0x0050a4                  _UART1_OFF
+                  0x0050b2                  _UART1_ON
+                  0x0050c8                  _UART1_IN_pop
+                  0x0050d2                  _UART1_IN_count
+                  0x0050da                  _UART1_OUT_push
+                  0x0050e8                  _UART1_OUT_count
+ .text            0x0050f4        0x190 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\stream.o
+                  0x0050f4                  _streamPushCtr
+                  0x005142                  _streamPush
+                  0x00517c                  _streamPop
+                  0x0051b4                  _streamOpenWriteFrame
+                  0x0051f6                  _streamOpenReadFrame
+                  0x005242                  _streamReOpenReadFrame
+                  0x00525a                  _streamCloseReadFrame
+ .text            0x005284        0x182 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\frame_CTRL.o
+                  0x0052c8                  _emicbus2_rx_CTRL
+ .text            0x005406        0x162 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\Flash.o
+                  0x005406                  _flushProgramPutc3B
+                  0x005420                  _putc_program3B
+                  0x005454                  _ReadMem
+                  0x00548e                  _WriteMem
+                  0x0054fe                  _ErasePage
+                  0x00553a                  _getc_program3B
+ .text            0x005568        0x15c C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\frame_MSG.o
+                  0x005568                  _pI2C
+                  0x00565e                  _emicbus2_rx_MSG
 
-.dinit            0x0053ca         0xb6
- .dinit           0x0053ca         0xb6 data_init
+.dinit            0x0056c4         0xbe
+ .dinit           0x0056c4         0xbe data_init
 
-.text             0x005480        0x27e
- .text            0x005480         0xa2 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\USB_API.o
-                  0x005480                  _USB_Init
-                  0x005488                  _pUSB
-                  0x0054a0                  _Poll_USB
-                  0x0054fe                  _ISR_UART1_CALLBACK
-                  0x005518                  _USB_sendCount
- .text            0x005522         0x86 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\led_led.o
-                  0x005522                  _LEDs_led_init
-                  0x00552a                  _LEDs_led_blink
-                  0x00554a                  _LEDs_led_poll
- .text            0x0055a8         0x5c C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\Persist.o
-                  0x0055a8                  _save
-                  0x0055d6                  _load
- .text            0x005604         0x4e C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\userFncFile.o
-                  0x005604                  _onReset
-                  0x005612                  _eI2C
-                  0x005632                  _eUSB
- .text            0x005652         0x3a C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\frame_CTRL.o
-                  0x005652                  _emicbus2_rx_CTRL
- .text            0x00568c         0x26 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\systemTimer.o
-                  0x00568c                  _getSystemMilis
-                  0x005696                  _callback
-                  0x0056a8                  _systemTimeInit
- .text            0x0056b2         0x24 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\main.o
-                  0x0056b2                  _initSystem
-                  0x0056c0                  _main
- .text            0x0056d6         0x16 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\timer.o
-                  0x0056d6                  _timer4_init
- .text            0x0056ec         0x12 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\MCP2200.o
-                  0x0056ec                  _Init_USBDriver
-                  0x0056f8                  _Poll_USBDriver
+.text             0x005782        0x244
+ .text            0x005782         0xa2 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\USB_API.o
+                  0x005782                  _USB_Init
+                  0x00578a                  _pUSB
+                  0x0057a2                  _Poll_USB
+                  0x005800                  _ISR_UART1_CALLBACK
+                  0x00581a                  _USB_sendCount
+ .text            0x005824         0x86 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\led_led.o
+                  0x005824                  _LEDs_led_init
+                  0x00582c                  _LEDs_led_blink
+                  0x00584c                  _LEDs_led_poll
+ .text            0x0058aa         0x5c C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\Persist.o
+                  0x0058aa                  _save
+                  0x0058d8                  _load
+ .text            0x005906         0x4e C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\userFncFile.o
+                  0x005906                  _onReset
+                  0x005914                  _eI2C
+                  0x005934                  _eUSB
+ .text            0x005954         0x26 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\systemTimer.o
+                  0x005954                  _getSystemMilis
+                  0x00595e                  _callback
+                  0x005970                  _systemTimeInit
+ .text            0x00597a         0x24 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\main.o
+                  0x00597a                  _initSystem
+                  0x005988                  _main
+ .text            0x00599e         0x16 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\timer.o
+                  0x00599e                  _timer4_init
+ .text            0x0059b4         0x12 C:/Dropbox/EMIC/TARGETS/mariano.hunkeler__rfindustrial.com/TestMyId/USB_V2_2\build\default\production\MCP2200.o
+                  0x0059b4                  _Init_USBDriver
+                  0x0059c0                  _Poll_USBDriver
