@@ -318,6 +318,33 @@ void emicbus2_reply_ack_ext(uint8_t dst, uint8_t seq_confirmado,
     emicbus2_tx(f, (uint16_t)(9 + plen));
 }
 
+/*==================[dump de diagnostico (CTRL DUMP_I2C 0x0F, F6/H8)]=======*/
+uint8_t emicbus2_debug_dump(uint8_t *d)
+{
+    uint16_t lo;
+    uint8_t hi;
+    uint16_t v;
+    v = I2C2CON;  d[0] = (uint8_t)v; d[1] = (uint8_t)(v >> 8);
+    v = I2C2STAT; d[2] = (uint8_t)v; d[3] = (uint8_t)(v >> 8);
+    v = I2C2ADD;  d[4] = (uint8_t)v; d[5] = (uint8_t)(v >> 8);
+    v = I2C2MSK;  d[6] = (uint8_t)v; d[7] = (uint8_t)(v >> 8);
+    v = I2C2BRG;  d[8] = (uint8_t)v; d[9] = (uint8_t)(v >> 8);
+    d[10] = in_txn;
+    d[11] = (uint8_t)rxlen;
+    d[12] = (uint8_t)(rxlen >> 8);
+    d[13] = txq_n;
+    d[14] = tx_tries;
+    d[15] = (uint8_t)tx_backoff;
+    d[16] = (uint8_t)(tx_backoff >> 8);
+    flashRead(0xFF0000UL, &lo, &hi);    /* DEVID */
+    d[17] = (uint8_t)lo;
+    d[18] = (uint8_t)(lo >> 8);
+    flashRead(0xFF0002UL, &lo, &hi);    /* DEVREV */
+    d[19] = (uint8_t)lo;
+    d[20] = (uint8_t)(lo >> 8);
+    return 21;
+}
+
 /*==================[init + poll]===========================================*/
 void EMICBus2_init(void)
 {

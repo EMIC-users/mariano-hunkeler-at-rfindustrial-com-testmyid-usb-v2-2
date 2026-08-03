@@ -30,6 +30,8 @@ uint8_t emicbus2_my_id(void);
 void emicbus2_reply_ack_ext(uint8_t dst, uint8_t seq_confirmado,
                             const uint8_t *data, uint8_t n);
 
+uint8_t emicbus2_debug_dump(uint8_t *d);
+
 void EMICBus2_init(void);
 void poll_EMICBus2(void);
 
